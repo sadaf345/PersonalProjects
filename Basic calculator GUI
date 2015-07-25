@@ -1,0 +1,323 @@
+package GUI;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.util.Observable;
+import java.util.Observer;
+
+
+/**
+ * Created by sadaf345 on 7/19/2015.
+ */
+public class GUI extends Application{
+    private Button times;
+    private Button add;
+    private Button sub;
+    private Button div;
+    private Button eq;
+    private Button clear;
+    private Button neg;
+
+    private Button one;
+    private Button two;
+    private Button three;
+    private Button four;
+    private Button five;
+    private Button six;
+    private Button seven;
+    private Button eight;
+    private Button nine;
+    private Button zero;
+
+    private TextField text;
+    private String equation;
+
+
+    public void start (Stage stage) {
+        BorderPane border = new BorderPane();
+        text = new TextField(  );
+
+        border.setTop(text);
+        GridPane grid = new GridPane();
+        VBox left = new VBox();
+        VBox right = new VBox();
+
+        one = new Button("1");
+        one.setMinSize(35, 35);
+        two = new Button("2");
+        two.setMinSize(35, 35);
+        three = new Button("3");
+        three.setMinSize(35, 35);
+        four = new Button("4");
+        four.setMinSize(35, 35);
+        five = new Button("5");
+        five.setMinSize(35, 35);
+        six = new Button("6");
+        six.setMinSize(35, 35);
+        seven = new Button("7");
+        seven.setMinSize(35, 35);
+        eight = new Button("8");
+        eight.setMinSize(35, 35);
+        nine = new Button("9");
+        nine.setMinSize(35, 35);
+
+        grid.add(seven, 0, 0);
+        grid.add(eight, 1, 0);
+        grid.add(nine, 2, 0);
+        grid.add(four, 0, 1);
+        grid.add(five, 1, 1);
+        grid.add(six, 2, 1);
+        grid.add(one, 0, 2);
+        grid.add(two, 1, 2);
+        grid.add(three, 2, 2);
+
+        zero = new Button("0");
+        zero.setMinSize(105, 35);
+
+        GridPane operators = new GridPane();
+        times = new Button("*");
+        times.setMinSize(35, 35);
+        add = new Button("+");
+        add.setMinSize(35, 35);
+        sub = new Button("-");
+        sub.setMinSize(35, 35);
+        div = new Button("/");
+        div.setMinSize(35, 35);
+        eq = new Button("=");
+        eq.setMinSize(70, 35);
+        clear = new Button("C");
+        clear.setMinSize(35, 35);
+        neg = new Button("+=");
+        neg.setMinSize(35, 35);
+
+
+        operators.add(clear, 0, 0);
+        operators.add(neg, 1, 0);
+        operators.add(add, 0, 1);
+        operators.add(sub, 1, 1);
+        operators.add(times, 0, 2);
+        operators.add(div, 1, 2);
+
+        right.getChildren().add(operators);
+        right.getChildren().add(eq);
+
+        border.setRight(right);
+
+        left.getChildren().add(grid);
+        left.getChildren().add(zero);
+
+        border.setLeft(left);
+        equation = "";
+        clear.setOnAction(event -> text.setText(""));
+        clear.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.clear();
+                equation = "";
+            }
+        });
+        //zero.setOnAction(event -> text.setText(text.getText() + "0"));
+        zero.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "0");
+                equation += "0";
+            }
+        });
+
+        one.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "1");
+                equation += "1";
+
+            }
+        });
+        two.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "2");
+                equation += "2";
+            }
+        });
+        three.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "3");
+                equation += "3";
+            }
+        });
+        four.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "4");
+                equation += "4";
+            }
+        });
+        five.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "5");
+                equation += "5";//text.getText();
+
+            }
+        });
+        six.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "6");
+                equation += "6";//text.getText();
+            }
+        });
+        seven.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "7");
+                equation += "7";
+            }
+        });
+        eight.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "8");
+                equation += "8";
+            }
+        });
+        nine.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "9");
+                equation += "9";
+            }
+        });
+        add.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "+");
+                equation += "+";
+            }
+        });
+        sub.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "-");
+                equation += "-";
+            }
+        });
+        times.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "*");
+                equation += "*";
+            }
+        });
+        div.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                text.setText(text.getText() + "/");
+                equation += "/";
+            }
+        });
+
+        //eq.setOnAction(event -> text.setText(equation));
+        eq.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                final double solved = solve(equation);
+                text.setText(String.valueOf(solved));
+            }
+        });
+
+        Scene scene = new Scene(border);
+        stage.setTitle("Calculator GUI");
+        stage.setMinHeight(200);
+        stage.setMinWidth(300);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
+    public double solve(String side) {
+        int index = 0;
+        double result = 0;
+        int accum = 0;
+        String operator = "";
+        String conv = "";
+        if (side.substring(0).equals("x") || side.substring(0).equals("*")) {
+            return 0;
+        }
+        else if( side.substring(0).equals("/")) {
+            return 0;
+        }
+        else if( side.substring(0).equals("+")) {
+            return 0;
+        }
+        else if( side.substring(0).equals("-")) {
+            return 0;
+        }
+        else if (side.substring(side.length()-1).equals("x") || side.substring(side.length()-1).equals("*")){
+            return 0;
+        }
+        else if (side.substring(side.length()-1).equals("/")) {
+            return 0;
+        }
+        else if (side.substring(side.length()-1).equals("+")) {
+            return 0;
+        }
+        else if (side.substring(side.length()-1).equals("-")) {
+            return 0;
+        }
+        else {
+            while (index < side.length()) {
+                if (Character.isDigit(side.charAt(index)) == false) { //isNumeric(side.substring(index)) == false) {
+                    operator = String.valueOf(side.charAt(index));
+                    index++;
+                }
+                else {
+                    while (Character.isDigit(side.charAt(index)) == true )//!side.substring(index).matches("[,/!%<>]") && index < side.length())
+                    {
+                        conv += side.charAt(index);
+                        index++;
+                        if (index == side.length())
+                            break;
+                    }
+                    double temp = Double.parseDouble(conv);
+                    conv = "";
+                    if (operator.equals("")) {
+                        result = temp;
+                    }
+                    if (operator.equals("+")) {
+                        result += temp;
+                    }
+                    if (operator.equals("-")) {
+                        result -= temp;
+                    }
+                    if (operator.equals("x") || operator.equals("*")) {
+                        result *= temp;
+                    }
+                    if (operator.equals("/")){
+                        result /= temp;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public static void main( String[] args ) {
+            Application.launch(args);
+    }
+
+
+
+
+}
