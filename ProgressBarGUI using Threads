@@ -1,0 +1,87 @@
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+import java.util.Observable;
+
+
+/**
+ * Created by sadaf345 on 8/1/2015.
+ */
+public class ProgressBarGui extends Application {
+    private ProgressBar progress;
+    private Label percentage;
+    public void start (Stage stage) {
+        Label title = new Label("Progress Bar GUI w/ Threadding");
+        title.setFont(new Font("Helvetica", 30));
+        BorderPane border = new BorderPane();
+        BorderPane top = new BorderPane();
+        top.setCenter(title);
+        BorderPane name = new BorderPane();
+        name.setCenter(new Label("By Sadaf Chowdhury"));
+        top.setBottom(name);
+        border.setTop(top);
+        progress = new ProgressBar(.0);
+        progress.setMinSize(50, 25);
+        border.setCenter(progress);
+        percentage = new Label("0 Percent");
+        BorderPane bottom = new BorderPane();
+        bottom.setCenter(percentage);
+        border.setBottom(bottom);
+
+        ProgressBarThread th = new ProgressBarThread(1, progress, percentage);
+        th.start();
+
+        Scene scene = new Scene(border);
+        stage.setTitle("ProgressBar GUI");
+        stage.setMinHeight(200);
+        stage.setMinWidth(300);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
+
+    class ProgressBarThread extends Thread{
+
+        private ProgressBar prog;
+
+        private Label pc;
+
+        private int end;
+
+        public ProgressBarThread(int finish, ProgressBar progess, Label percentage) {
+            this.end = finish;
+            this.prog = progess;
+            this.pc = percentage;
+        }
+
+        public void run() {
+            for (double i = 0; i < end; i = i + .10) {
+                final Double fin;
+                final int conv;
+                try {
+                    prog.setProgress(i);
+                    //percentage.setText(pc);
+                    Thread.sleep(1000);
+                }
+                catch (InterruptedException e) {
+
+                }
+                fin = new Double(i * 100);
+                conv = fin.intValue();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        percentage.setText(Integer.toString(conv) + " Percent");
+                    }
+                });
+            }
+        }
+    }
+}
