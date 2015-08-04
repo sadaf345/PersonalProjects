@@ -34,7 +34,7 @@ public class ProgressBarGui extends Application {
         bottom.setCenter(percentage);
         border.setBottom(bottom);
 
-        ProgressBarThread th = new ProgressBarThread(1, progress, percentage);
+        ProgressBarThread th = new ProgressBarThread(1, progress);
         th.start();
 
         Scene scene = new Scene(border);
@@ -51,14 +51,12 @@ public class ProgressBarGui extends Application {
 
         private ProgressBar prog;
 
-        private Label pc;
 
         private int end;
 
-        public ProgressBarThread(int finish, ProgressBar progess, Label percentage) {
+        public ProgressBarThread(int finish, ProgressBar progess) {
             this.end = finish;
             this.prog = progess;
-            this.pc = percentage;
         }
 
         public void run() {
