@@ -1,0 +1,128 @@
+div {
+    border-radius:5px;
+    background-color:orange;
+    height:50px;
+    width:50px;
+}
+#header {
+    z-index:2;
+    position:fixed;
+    width:97%;
+    font-family:Arial;
+    text-align:center;
+    line-height:50px;
+    color:white;
+    font-size:20px;
+    background-color:grey;
+}
+#footer {
+    clear:both;
+    position:relative;
+    margin-top:50px;
+    height:50px;
+    width:97%;
+    color:white;
+    text-align:center;
+    background-color:grey;
+}
+
+.left {
+    float:left;
+    position:relative;
+    height:50px;
+    margin-top:60px;
+    height:90%;
+    background-color:lightgrey;
+    width:13%;
+    margin-bottom:10px;
+    text-align:center;
+    
+}
+
+.right {
+    float:right;
+    position:relative;
+    margin-top:60px;
+    margin-right:5px;
+    height:90%;
+    width:80.95%;
+    background-color:beige;
+    margin-right:24px;
+    
+}
+p {
+    font-family:Arial;
+}
+.pic{
+    z-index: 1;
+    position:absolute;
+    height:200px;
+    width:200px;
+    border:solid 3px black;
+    background-color:transparent;
+    border-radius:50%;
+    margin-top:70px;
+    margin-left:1080px;
+    overflow:hidden;
+}
+.pic img {
+    height:200px;
+    width:200px;
+}
+.linkedinpic {
+    z-index: 1;
+    position:absolute;
+    height:15px;
+    width:15px;
+    border:solid 0px black;
+    background-color:transparent;
+    border-radius:50%;
+    margin-top:-37px;
+    margin-left:593px;
+}
+.linkedinpic img {
+    height:17px;
+    width:17px;
+}
+.githubpic {
+    z-index: 1;
+    position:absolute;
+    height:15px;
+    width:15px;
+    border:solid 0px black;
+    background-color:transparent;
+    border-radius:50%;
+    margin-top:-36px;
+    margin-left:593px;
+}
+.githubpic img {
+    height:17px;
+    width:17px;
+}
+a:hover{
+    font-weight:bold;
+}
+#skills {
+    font-family:Impact,Arial;
+    font-size:20px;
+}
+#linkedin {
+    margin-top:-3px;
+
+}
+#github {
+    margin-top:-15px;
+}
+a {
+    text-decoration:none;
+}
+/*#circle {
+    position:absolute;
+    height:100px;
+    width:100px;
+    background-color:transparent;
+    border:solid 3px black;
+    border-radius:50%;
+    z-index:2;
+    margin-top:70px;
+    margin-left:1150px;
