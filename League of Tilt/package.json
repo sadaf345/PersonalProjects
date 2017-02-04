@@ -1,0 +1,16 @@
+{
+  "name": "league_app",
+  "version": "1.0.0",
+  "description": "League Riot API Project",
+  "main": "api.js",
+  "dependencies": {
+    "leagueapi": "^0.4.21",
+    "lol-js": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sadaf Chowdhury",
+  "license": "ISC"
+}
